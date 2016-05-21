@@ -1,5 +1,7 @@
 FROM ruby:2.2.5-slim
 
+MAINTAINER Thilo-Alexander Ginkel <tg@tgbyte.de>
+
 EXPOSE 10000 35729
 ENV RACK_ENV=production
 
@@ -23,7 +25,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -o Apt::Install-Recommends
 
 ADD . /home/slides
 RUN mkdir -p /home/slides/slides && \
-    chown www.www /home/slides/slides
+    chown -R www.www /home/slides/slides
 
 USER www
 
