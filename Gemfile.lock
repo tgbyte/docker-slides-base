@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ginkel/reveal-ck.git
-  revision: 3480eb1f79f3ee3f16dcbe378aa929c84e3e00fc
+  revision: b41809d4e0cce963017e1618b2396df1b97a8c68
   branch: asciidoctor
   submodules: true
   specs:

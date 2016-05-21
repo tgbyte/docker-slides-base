@@ -1,0 +1,8 @@
+:revealjs_customtheme: css/nightly.css
+:revealjs_history: true
+:revealjs_slideNumber: true
+:source-highlighter: pygments
+:pygments-style: friendly
+:imagesdir: images/
+
+include::content/slides.adoc[]

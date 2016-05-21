@@ -4,6 +4,7 @@ MAINTAINER Thilo-Alexander Ginkel <tg@tgbyte.de>
 
 EXPOSE 10000 35729
 ENV RACK_ENV=production
+ENV RUN_AS=${UID:-www}
 
 ENV DUMBINIT_VERSION=1.0.2
 RUN mkdir -p /home/slides && \
@@ -32,8 +33,10 @@ USER www
 ENTRYPOINT ["/usr/local/bin/dumb-init", "reveal-ck"]
 CMD ["serve"]
 
-ONBUILD ADD . /home/slides
+ONBUILD ARG UID
+ONBUILD ENV RUN_AS=${UID:-www}
 ONBUILD USER root
+ONBUILD ADD . /home/slides
 ONBUILD RUN reveal-ck generate && \
-            chown -R www.www /home/slides/slides
-ONBUILD USER www
+            chown -R $RUN_AS /home/slides/slides
+ONBUILD USER $RUN_AS
