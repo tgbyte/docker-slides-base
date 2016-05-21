@@ -33,4 +33,7 @@ ENTRYPOINT ["/usr/local/bin/dumb-init", "reveal-ck"]
 CMD ["serve"]
 
 ONBUILD ADD . /home/slides
-ONBUILD RUN reveal-ck generate
+ONBUILD USER root
+ONBUILD RUN reveal-ck generate && \
+            chown -R www.www /home/slides/slides
+ONBUILD USER www
