@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ginkel/reveal-ck.git
-  revision: b41809d4e0cce963017e1618b2396df1b97a8c68
+  revision: 9c15873ffaea01a8157115e993fc89784dd489c8
   branch: asciidoctor
   submodules: true
   specs:
@@ -82,6 +82,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (3.4.0)
     pygments.rb (0.6.3)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.2.0)
@@ -111,6 +112,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  puma
   pygments.rb
   reveal-ck!
 
