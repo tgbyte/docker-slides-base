@@ -4,5 +4,6 @@
 :source-highlighter: pygments
 :pygments-style: friendly
 :imagesdir: images/
+:docinfo:
 
 include::content/slides.adoc[]

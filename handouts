@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ -f /home/slides/content/slides-docinfo.xml ]
+then
+  cp /home/slides/content/slides-docinfo.xml /home/slides
+else
+  rm /home/slides/slides-docinfo.xml
+fi
+
+# Generate DocBook file
+asciidoctor \
+  -a handouts \
+  -a data-uri! \
+  -b docbook \
+  -d book \
+  -o /home/slides/handouts.xml \
+  /home/slides/slides.adoc
+
+# Transform DocBook file to PDF
+fopub \
+  -t /home/slides/docbook-xsl-custom \
+  /home/slides/handouts.xml
