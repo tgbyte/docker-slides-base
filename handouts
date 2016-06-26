@@ -19,4 +19,4 @@ asciidoctor \
 # Transform DocBook file to PDF
 fopub \
   -t /home/slides/docbook-xsl-custom \
-  /home/slides/handouts.xml
+  /home/slides/handouts.xml "$@"
