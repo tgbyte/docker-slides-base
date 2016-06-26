@@ -900,6 +900,16 @@
   -->
 
   <!-- Ignore speaker notes -->
-  <xsl:template match="db:note[@role='speaker'] | note[@role='speaker']"/>
+  <xsl:template match="db:note[@role='speaker']"/>
+
+  <xsl:template name="book.titlepage.before.verso">
+    <fo:block-container top="200mm" position="absolute" text-align="center">
+      <fo:block text-align="center">
+        <xsl:apply-templates select="//db:info/db:mediaobject[@role='company-logo']"
+                             mode="book.titlepage.recto.mode"/>
+      </fo:block>
+    </fo:block-container>
+    <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" break-after="page"/>
+  </xsl:template>
 
 </xsl:stylesheet>
