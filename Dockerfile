@@ -7,10 +7,8 @@ ENV RACK_ENV=production \
     RUN_AS=${UID:-www} \
     DUMBINIT_VERSION=1.0.2 \
     DEBIAN_FRONTEND=noninteractive \
-    JAVA_U=92 \
-    JAVA_B=14 \
     FOPUB_DIR=/opt/asciidoctor-fopub \
-    PATH=/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jdk1.8.0/bin:/opt/asciidoctor-fopub/bin \
+    PATH=/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/asciidoctor-fopub/bin \
     GRADLE_USER_HOME=/opt/gradle
 
 RUN set -x \
@@ -19,15 +17,11 @@ RUN set -x \
     && apt-get install -y -o Apt::Install-Recommends=0 \
        ca-certificates \
        git \
+       openjdk-7-jdk \
        wget \
        xsltproc \
     && wget -q -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v${DUMBINIT_VERSION}/dumb-init_${DUMBINIT_VERSION}_amd64 \
     && chmod +x /usr/local/bin/dumb-init \
-    && wget -q -O - --no-cookies --header 'Cookie: gpw_e24=x; oraclelicense=accept-securebackup-cookie' \
-       http://download.oracle.com/otn-pub/java/jdk/8u${JAVA_U}-b${JAVA_B}/server-jre-8u${JAVA_U}-linux-x64.tar.gz | \
-       tar xvz -C /opt \
-    && chown -R root:root /opt/jdk1.8.0_${JAVA_U} \
-    && ln -s /opt/jdk1.8.0_${JAVA_U} /opt/jdk1.8.0 \
     && (cd /opt && git clone https://github.com/asciidoctor/asciidoctor-fopub && "${FOPUB_DIR}/gradlew" -p "$FOPUB_DIR" -q -u installApp) \
     && apt-get remove -y --purge \
        ca-certificates \
