@@ -1,4 +1,4 @@
-FROM ruby:2.2.5-slim
+FROM ruby:2.3.1-slim
 
 MAINTAINER Thilo-Alexander Ginkel <tg@tgbyte.de>
 
