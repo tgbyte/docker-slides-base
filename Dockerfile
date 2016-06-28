@@ -12,7 +12,7 @@ ENV RACK_ENV=production \
     GRADLE_USER_HOME=/opt/gradle
 
 RUN set -x \
-    && mkdir -p /home/slides \
+    && mkdir -p /home/slides/handouts \
     && apt-get update \
     && apt-get install -y -o Apt::Install-Recommends=0 \
        ca-certificates \
@@ -24,7 +24,6 @@ RUN set -x \
     && chmod +x /usr/local/bin/dumb-init \
     && (cd /opt && git clone https://github.com/asciidoctor/asciidoctor-fopub && "${FOPUB_DIR}/gradlew" -p "$FOPUB_DIR" -q -u installApp) \
     && apt-get remove -y --purge \
-       ca-certificates \
        git \
        wget \
     && adduser --uid 500 --disabled-password --gecos "www" --quiet www
@@ -36,14 +35,12 @@ WORKDIR /home/slides
 RUN set -x \
     && apt-get install -y -o Apt::Install-Recommends=0 \
        build-essential \
-       ca-certificates \
        git \
        libssl-dev \
        python-pygments \
     && bundle -j4 --without development test \
     && apt-get remove -y --purge \
        build-essential \
-       ca-certificates \
        git \
        libssl-dev \
     && apt-get autoremove -y --purge
