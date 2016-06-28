@@ -35,7 +35,8 @@
 		font-size="&hsize4;"
 		space-before="&hsize4space;"
 		font-family="{$title.fontset}"/>
-      <mediaobject t:predicate="[not(@role) or @role != 'company-logo']"/>
+      <mediaobject t:predicate="[not(@role) or @role != 'company-logo']"
+                   space-before="&hsize5space;"/>
       <corpauthor font-size="&hsize3;"
 		  keep-with-next.within-column="always"
 		  space-before="2in"/>
