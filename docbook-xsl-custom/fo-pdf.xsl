@@ -49,15 +49,15 @@
   -->
 
   <xsl:template name="pickfont-sans">
-    <xsl:text>Arial,sans-serif</xsl:text>
+    <xsl:text>Liberation Sans</xsl:text>
   </xsl:template>
 
   <xsl:template name="pickfont-serif">
-    <xsl:text>Georgia,serif</xsl:text>
+    <xsl:text>Liberation Serif</xsl:text>
   </xsl:template>
 
   <xsl:template name="pickfont-mono">
-    <xsl:text>Liberation Mono,Courier New,Courier,monospace</xsl:text>
+    <xsl:text>Liberation Mono</xsl:text>
   </xsl:template>
 
   <xsl:template name="pickfont-dingbat">

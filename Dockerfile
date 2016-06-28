@@ -16,6 +16,7 @@ RUN set -x \
     && apt-get update \
     && apt-get install -y -o Apt::Install-Recommends=0 \
        ca-certificates \
+       fonts-liberation \
        git \
        openjdk-7-jdk \
        wget \
