@@ -49,20 +49,21 @@ RUN set -x \
 ADD . /home/slides
 RUN set -x \
     && xsltproc --output /home/slides/docbook-xsl-custom/handout-titlepage.xsl "${FOPUB_DIR}/build/fopub/docbook/template/titlepage.xsl" /home/slides/docbook-xsl-custom/handout-titlepage.xml \
+    && mv /home/slides/generate /usr/local/bin \
+    && mv /home/slides/serve /usr/local/bin \
     && mv /home/slides/handouts /usr/local/bin \
-    && chmod +x /usr/local/bin/handouts \
     && mkdir -p /home/slides/slides \
     && chown -R www.www /home/slides/slides
 
 USER www
 
 ENTRYPOINT ["/usr/local/bin/dumb-init"]
-CMD ["reveal-ck", "serve"]
+CMD ["serve"]
 
 ONBUILD ARG UID
 ONBUILD ENV RUN_AS=${UID:-www}
 ONBUILD USER root
 ONBUILD ADD . /home/slides
-ONBUILD RUN reveal-ck generate && \
+ONBUILD RUN generate && \
             chown -R $RUN_AS /home/slides
 ONBUILD USER $RUN_AS
