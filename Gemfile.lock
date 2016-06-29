@@ -1,10 +1,10 @@
 GIT
   remote: git://github.com/ginkel/reveal-ck.git
-  revision: 9c15873ffaea01a8157115e993fc89784dd489c8
+  revision: 44a86ac620cdd2396cfc9a45500f3ea4afa79f26
   branch: asciidoctor
   submodules: true
   specs:
-    reveal-ck (3.3.0)
+    reveal-ck (3.3.1)
       asciidoctor (= 1.5.3)
       docile (= 1.1.5)
       gemoji (= 2.1.0)
