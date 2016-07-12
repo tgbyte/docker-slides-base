@@ -5,7 +5,7 @@ MAINTAINER Thilo-Alexander Ginkel <tg@tgbyte.de>
 EXPOSE 10000 35729
 ENV RACK_ENV=production \
     RUN_AS=${UID:-www} \
-    DUMBINIT_VERSION=1.0.2 \
+    DUMBINIT_VERSION=1.1.1 \
     DEBIAN_FRONTEND=noninteractive \
     FOPUB_DIR=/opt/asciidoctor-fopub \
     PATH=/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/asciidoctor-fopub/bin \
