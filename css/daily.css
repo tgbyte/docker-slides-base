@@ -50,6 +50,7 @@ body {
 
 .reveal .slides section[data-background] h2 {
   background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
 }
 
 .reveal h3 {
