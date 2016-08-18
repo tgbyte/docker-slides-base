@@ -5,7 +5,8 @@ MAINTAINER Thilo-Alexander Ginkel <tg@tgbyte.de>
 EXPOSE 10000 35729
 ENV RACK_ENV=production \
     RUN_AS=${UID:-www} \
-    DUMBINIT_VERSION=1.1.1 \
+    DUMBINIT_VERSION=1.1.3 \
+    DUMBINIT_SHA256SUM=1af305fc011c72aa899c88fe6576e82f2c7657d8d5212a13583fd2de012e478f \
     DEBIAN_FRONTEND=noninteractive \
     FOPUB_DIR=/opt/asciidoctor-fopub \
     PATH=/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/asciidoctor-fopub/bin \
@@ -22,6 +23,9 @@ RUN set -x \
        wget \
        xsltproc \
     && wget -q -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v${DUMBINIT_VERSION}/dumb-init_${DUMBINIT_VERSION}_amd64 \
+    && echo "${DUMBINIT_SHA256SUM}  /usr/local/bin/dumb-init" > /tmp/SHA256SUM \
+    && sha256sum -c /tmp/SHA256SUM \
+    && rm /tmp/SHA256SUM \
     && chmod +x /usr/local/bin/dumb-init \
     && (cd /opt && git clone https://github.com/asciidoctor/asciidoctor-fopub && "${FOPUB_DIR}/gradlew" -p "$FOPUB_DIR" -q -u installApp) \
     && apt-get remove -y --purge \
