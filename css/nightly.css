@@ -146,8 +146,8 @@ body {
   overflow: auto;
   max-height: 400px;
   word-wrap: normal;
-  background: #3F3F3F;
-  color: #DCDCDC; }
+  background: #EFEFEF;
+  color: #000; }
 
 .reveal table {
   margin: auto;
