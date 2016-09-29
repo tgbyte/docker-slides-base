@@ -14,6 +14,9 @@ ENV RACK_ENV=production \
     BASENAME=slides
 
 RUN set -x \
+    && apt-get update -qq \
+    && apt-get install -y -o Apt::Install-Recommends=0 \
+       curl \
     # Get rid of buggy httpredir.debian.org, cf. http://stackoverflow.com/a/37426929/43575
     && sed -i "s/httpredir.debian.org/`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`/" /etc/apt/sources.list \
     && mkdir -p /home/slides/handouts \
