@@ -8,7 +8,7 @@ else
 
     while (true)
     do
-        inotifywait -e MOVE_SELF -e modify /home/slides/content/ /home/slides/images/
+        inotifywait -e move -e modify -e create -e delete -r --format "%e %f" --exclude '.*___jb_tmp___' /home/slides/content/ /home/slides/images/
         /usr/local/bin/handouts
     done
 fi
