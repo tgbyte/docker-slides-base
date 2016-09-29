@@ -1,2 +1,14 @@
 #!/bin/bash
-reveal-ck serve
+
+if [ -f /home/slides/content/slides.adoc ]
+then
+    reveal-ck serve
+else
+    /usr/local/bin/handouts
+
+    while (true)
+    do
+        inotifywait -e MOVE_SELF -e modify /home/slides/content/ /home/slides/images/
+        /usr/local/bin/handouts
+    done
+fi

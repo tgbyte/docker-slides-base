@@ -1,2 +1,6 @@
 #!/bin/bash
-reveal-ck generate
+
+if [ -f /home/slides/content/slides.adoc ]
+then
+    reveal-ck generate
+fi

@@ -1,11 +1,22 @@
-#!/bin/bash
+#!/bin/bash -x
 
-if [ -f /home/slides/content/slides-docinfo.xml ]
+if [ -f /home/slides/content/slides.adoc ]
 then
-  cp /home/slides/content/slides-docinfo.xml /home/slides
+    base=slides
+    handouts=handouts
 else
-  rm /home/slides/slides-docinfo.xml
+    base=$BASENAME
+    handouts=$BASENAME
 fi
+
+if [ -f /home/slides/content/${base}-docinfo.xml ]
+then
+  cp /home/slides/content/${base}-docinfo.xml /home/slides
+else
+  rm /home/slides/${base}-docinfo.xml
+fi
+
+sed -ri "s/slides\.adoc/${base}.adoc/" /home/slides/slides.adoc
 
 # Generate DocBook file
 asciidoctor \
@@ -13,13 +24,13 @@ asciidoctor \
   -a data-uri! \
   -b docbook \
   -d book \
-  -o /home/slides/handouts.xml \
+  -o /home/slides/${handouts}.xml \
   /home/slides/slides.adoc
 
 # Transform DocBook file to PDF
 fopub \
   -t /home/slides/docbook-xsl-custom \
-  /home/slides/handouts.xml "$@"
+  /home/slides/${handouts}.xml "$@"
 
 # Export via volume
-mv /home/slides/handouts.pdf /home/slides/handouts/
+mv /home/slides/${handouts}.pdf /home/slides/handouts/
