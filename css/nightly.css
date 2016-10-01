@@ -270,3 +270,7 @@ body {
 .reveal td img {
   margin: 0;
 }
+
+.reveal span.big {
+  font-size: larger;
+}
