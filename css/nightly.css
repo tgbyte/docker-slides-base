@@ -274,3 +274,7 @@ body {
 .reveal span.big {
   font-size: larger;
 }
+
+.reveal .halign-center {
+  text-align: center;
+}
