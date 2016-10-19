@@ -1,6 +1,7 @@
 :revealjs_customtheme: css/nightly.css
 :revealjs_history: true
 :revealjs_slideNumber: true
+:revealjs_postmessageevents: true
 :source-highlighter: pygments
 :pygments-style: friendly
 :imagesdir: images/
