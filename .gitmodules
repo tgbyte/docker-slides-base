@@ -3,4 +3,4 @@
 	url = https://github.com/asciidoctor/asciidoctor-reveal.js.git
 [submodule "slides/reveal.js"]
 	path = slides/reveal.js
-	url = https://github.com/tgbyte/reveal.js.git
+	url = https://github.com/tgbyte/reveal.js.git/
