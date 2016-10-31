@@ -11,7 +11,7 @@ fi
 
 if [ -f /home/slides/content/${base}-docinfo.xml ]
 then
-  cp /home/slides/content/${base}-docinfo.xml /home/slides
+  cp /home/slides/content/${base}-docinfo.xml /home/slides/slides.adoc
 else
   rm /home/slides/${base}-docinfo.xml
 fi
