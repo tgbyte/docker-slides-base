@@ -13,17 +13,15 @@ ENV RACK_ENV=production \
     GRADLE_USER_HOME=/opt/gradle \
     BASENAME=slides
 
+ADD sources.list /etc/apt/
 RUN set -x \
-    && apt-get update -qq \
-    && apt-get install -y -o Apt::Install-Recommends=0 \
-       curl \
-    # Get rid of buggy httpredir.debian.org, cf. http://stackoverflow.com/a/37426929/43575
-    && sed -i "s/httpredir.debian.org/`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`/" /etc/apt/sources.list \
     && mkdir -p /home/slides/handouts \
     && apt-get update -qq \
+    && (echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections) \
     && apt-get install -y -o Apt::Install-Recommends=0 \
        ca-certificates \
        fonts-liberation \
+       ttf-mscorefonts-installer \
        git \
        inotify-tools \
        openjdk-7-jdk \

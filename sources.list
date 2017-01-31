@@ -1,0 +1,3 @@
+deb http://ftp.halifax.rwth-aachen.de/debian jessie main contrib
+deb http://ftp.halifax.rwth-aachen.de/debian jessie-updates main contrib
+deb http://security.debian.org jessie/updates main
