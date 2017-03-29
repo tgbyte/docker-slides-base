@@ -1,4 +1,4 @@
-FROM ruby:2.3.1-slim
+FROM ruby:2.4.0-slim
 
 MAINTAINER Thilo-Alexander Ginkel <tg@tgbyte.de>
 
@@ -69,7 +69,7 @@ RUN set -x \
 USER www
 
 ENTRYPOINT ["/usr/local/bin/dumb-init"]
-CMD ["serve"]
+CMD ["generate"]
 
 ONBUILD ARG UID
 ONBUILD ENV RUN_AS=${UID:-www}
@@ -78,3 +78,4 @@ ONBUILD ADD . /home/slides
 ONBUILD RUN generate && \
             chown -R $RUN_AS /home/slides
 ONBUILD USER $RUN_AS
+ONBUILD CMD ["serve"]
