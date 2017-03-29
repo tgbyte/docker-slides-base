@@ -3,4 +3,5 @@
 if [ -f /home/slides/content/slides.adoc ]
 then
     reveal-ck generate
+    cp -R /home/slides/slides/* /out/
 fi

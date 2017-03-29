@@ -59,23 +59,15 @@ RUN set -x \
 
 ADD . /home/slides
 RUN set -x \
+    && ln -sf /home/slides/content /src/content \
+    && ln -sf /home/slides/images /src/images \
     && xsltproc --output /home/slides/docbook-xsl-custom/handout-titlepage.xsl "${FOPUB_DIR}/build/fopub/docbook/template/titlepage.xsl" /home/slides/docbook-xsl-custom/handout-titlepage.xml \
     && mv /home/slides/generate /usr/local/bin \
     && mv /home/slides/serve /usr/local/bin \
     && mv /home/slides/handouts /usr/local/bin \
-    && mkdir -p /home/slides/slides \
-    && chown -R www.www /home/slides/slides
+    && mkdir -p /home/slides/slides /out
 
-USER www
+VOLUME ["/src", "/out"]
 
 ENTRYPOINT ["/usr/local/bin/dumb-init"]
 CMD ["generate"]
-
-ONBUILD ARG UID
-ONBUILD ENV RUN_AS=${UID:-www}
-ONBUILD USER root
-ONBUILD ADD . /home/slides
-ONBUILD RUN generate && \
-            chown -R $RUN_AS /home/slides
-ONBUILD USER $RUN_AS
-ONBUILD CMD ["serve"]
