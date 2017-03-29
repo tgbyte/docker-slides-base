@@ -59,6 +59,7 @@ RUN set -x \
 
 ADD . /home/slides
 RUN set -x \
+    && mkdir -p /src /src/content /src/images \
     && ln -sf /home/slides/content /src/content \
     && ln -sf /home/slides/images /src/images \
     && xsltproc --output /home/slides/docbook-xsl-custom/handout-titlepage.xsl "${FOPUB_DIR}/build/fopub/docbook/template/titlepage.xsl" /home/slides/docbook-xsl-custom/handout-titlepage.xml \
