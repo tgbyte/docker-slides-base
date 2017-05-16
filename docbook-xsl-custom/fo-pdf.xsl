@@ -334,7 +334,12 @@
   </xsl:param>
 
   <xsl:attribute-set name="formal.title.properties">
-    <xsl:attribute name="color"><xsl:value-of select="$caption.color"/></xsl:attribute>
+    <xsl:attribute name="font-style">italic</xsl:attribute>
+    <xsl:attribute name="font-weight">normal</xsl:attribute>
+    <xsl:attribute name="font-size">
+      <xsl:value-of select="$body.font.master"/>
+      <xsl:text>pt</xsl:text>
+    </xsl:attribute>
   </xsl:attribute-set>
 
   <xsl:template match="*" mode="admon.graphic.width">
