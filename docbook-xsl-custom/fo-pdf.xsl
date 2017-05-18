@@ -746,13 +746,13 @@
     Anchors & Links
   -->
 
-  <xsl:attribute-set name="xref.properties">
+  <!-- <xsl:attribute-set name="xref.properties">
     <xsl:attribute name="color"><xsl:value-of select="$link.color"/></xsl:attribute>
   </xsl:attribute-set>
 
   <xsl:attribute-set name="simple.xlink.properties">
     <xsl:attribute name="color"><xsl:value-of select="$link.color"/></xsl:attribute>
-  </xsl:attribute-set>
+  </xsl:attribute-set> -->
 
   <!--
     Lists
