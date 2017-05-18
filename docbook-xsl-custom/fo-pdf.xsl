@@ -266,7 +266,7 @@
   -->
 
   <xsl:param name="bridgehead.in.toc">0</xsl:param>
-  <xsl:param name="toc.section.depth">2</xsl:param>
+  <xsl:param name="toc.section.depth">1</xsl:param>
 
   <xsl:template name="toc.line">
     <xsl:variable name="id">
