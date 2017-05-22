@@ -32,7 +32,7 @@ RUN set -x \
     && sha256sum -c /tmp/SHA256SUM \
     && rm /tmp/SHA256SUM \
     && chmod +x /usr/local/bin/dumb-init \
-    && (cd /opt && git clone https://github.com/asciidoctor/asciidoctor-fopub && "${FOPUB_DIR}/gradlew" -p "$FOPUB_DIR" -q -u installApp) \
+    && (cd /opt && git clone https://github.com/asciidoctor/asciidoctor-fopub && sed -i 's,dependencies {,dependencies {\nruntime "org.apache.pdfbox:fontbox:1.8.13",' "${FOPUB_DIR}/build.gradle" && "${FOPUB_DIR}/gradlew" -p "$FOPUB_DIR" -q -u installApp) \
     && apt-get remove -y --purge \
        git \
        wget \
