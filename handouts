@@ -22,6 +22,8 @@ sed -ri "s/slides\.adoc/${base}.adoc/" /home/slides/slides.adoc
 asciidoctor \
   -a handouts \
   -a data-uri! \
+  -a revdate="$(git show -s --format=%cd --date=format:%d.%m.%Y)@" \
+  -a revnumber="$(git describe)@" \
   -b docbook \
   -d book \
   -o /home/slides/${handouts}.xml \

@@ -34,7 +34,6 @@ RUN set -x \
     && chmod +x /usr/local/bin/dumb-init \
     && (cd /opt && git clone https://github.com/asciidoctor/asciidoctor-fopub && sed -i 's,dependencies {,dependencies {\nruntime "org.apache.pdfbox:fontbox:1.8.13",' "${FOPUB_DIR}/build.gradle" && "${FOPUB_DIR}/gradlew" -p "$FOPUB_DIR" -q -u installApp) \
     && apt-get remove -y --purge \
-       git \
        wget \
     && adduser --uid 500 --disabled-password --gecos "www" --quiet www
 
@@ -45,13 +44,11 @@ WORKDIR /home/slides
 RUN set -x \
     && apt-get install -y -o Apt::Install-Recommends=0 \
        build-essential \
-       git \
        libssl-dev \
        python-pygments \
     && bundle -j4 --without development test \
     && apt-get remove -y --purge \
        build-essential \
-       git \
        libssl-dev \
     && apt-get autoremove -y --purge
 
