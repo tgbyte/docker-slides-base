@@ -16,15 +16,18 @@ ENV RACK_ENV=production \
 ADD sources.list /etc/apt/
 RUN set -x \
     && mkdir -p /home/slides/handouts \
+    && echo 'deb http://deb.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/jessie-backports.list \
     && apt-get update -qq \
+    && apt-get -t jessie-backports install -y --no-install-recommends \
+       git \
+       openjdk-8-jdk \
+       ca-certificates-java \
     && (echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections) \
     && apt-get install -y -o Apt::Install-Recommends=0 \
        ca-certificates \
        fonts-liberation \
        ttf-mscorefonts-installer \
-       git \
        inotify-tools \
-       openjdk-7-jdk \
        wget \
        xsltproc \
     && wget -q -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v${DUMBINIT_VERSION}/dumb-init_${DUMBINIT_VERSION}_amd64 \
