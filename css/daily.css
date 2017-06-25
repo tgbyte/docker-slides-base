@@ -379,3 +379,7 @@ body {
 .reveal .slide-number {
     background-color: inherit;
 }
+
+.black {
+  color: black;
+}
