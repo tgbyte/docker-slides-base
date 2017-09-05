@@ -382,3 +382,11 @@ body {
 .black {
   color: black;
 }
+
+.reveal .has-light-background {
+    color: #222;
+}
+
+.reveal .has-light-background h1, .reveal .has-light-background h2, .reveal .has-light-background h3, .reveal .has-light-background h4, .reveal .has-light-background h5, .reveal .has-light-background h6 {
+    color: #222;
+}
