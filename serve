@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ${TRACKING} != "1" ]; then
+if [[ "${TRACKING}" != "1" ]]; then
     rm /home/slides/slides-docinfo-footer.html
 fi
 
