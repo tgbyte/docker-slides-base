@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ ${TRACKING} != "1" ]; then
+    rm /home/slides/slides-docinfo-footer.html
+fi
+
 if [ -f /home/slides/content/slides.adoc ]
 then
     reveal-ck serve
