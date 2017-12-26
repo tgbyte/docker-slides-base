@@ -6,7 +6,7 @@ fi
 
 if [ -f /home/slides/content/slides.adoc ]
 then
-    reveal-ck serve
+    reveal-ck serve --host 0.0.0.0
 else
     /usr/local/bin/handouts
 
